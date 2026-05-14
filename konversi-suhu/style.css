@@ -1,0 +1,284 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+  transition: 0.5s ease;
+}
+
+body.freezing {
+  background: linear-gradient(to bottom right, #312e81, #4338ca);
+}
+
+body.cold {
+  background: linear-gradient(to bottom right, #1e3a8a, #2563eb);
+}
+
+body.normal {
+  background: linear-gradient(to bottom right, #1d4ed8, #60a5fa);
+}
+
+body.warm {
+  background: linear-gradient(to bottom right, #f59e0b, #fbbf24);
+}
+
+body.hot {
+  background: linear-gradient(to bottom right, #ea580c, #fb923c);
+}
+
+.container {
+  z-index: 10;
+}
+
+.card {
+  width: 340px;
+  padding: 25px;
+  border-radius: 25px;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(12px);
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.2),
+    0 0 30px rgba(255, 255, 255, 0.2);
+
+  animation: floatCard 4s ease-in-out infinite;
+}
+
+.card h1 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #111827;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.input-group {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.input-group input {
+  flex: 1;
+  padding: 14px;
+  border: none;
+  border-radius: 14px;
+  outline: none;
+  font-size: 18px;
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.input-group select {
+  width: 90px;
+  border: none;
+  border-radius: 14px;
+  padding: 10px;
+  outline: none;
+  font-size: 18px;
+  background: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+}
+
+.status {
+  width: fit-content;
+  margin: 0 auto 20px;
+  padding: 10px 20px;
+  border-radius: 999px;
+  font-size: 20px;
+  font-weight: 500;
+  background: rgba(255, 255, 255, 0.4);
+  color: #111827;
+}
+
+.result {
+  background: rgba(255, 255, 255, 0.35);
+  padding: 18px;
+  border-radius: 18px;
+  margin-bottom: 15px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  transition: 0.3s;
+}
+
+.result:hover {
+  transform: scale(1.03);
+}
+
+.result span {
+  color: #6b7280;
+  font-size: 16px;
+}
+
+.result h2 {
+  color: #111827;
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.result.active {
+  background: #020617;
+}
+
+.result.active span,
+.result.active h2 {
+  color: white;
+}
+
+.cloud {
+  position: absolute;
+  background: #e5e7eb;
+  border-radius: 50px;
+  opacity: 0.8;
+  filter: blur(1px);
+}
+
+.cloud::before,
+.cloud::after {
+  content: "";
+  position: absolute;
+  background: #e5e7eb;
+  border-radius: 50%;
+}
+.cloud1 {
+  width: 100px;
+  height: 35px;
+  top: 120px;
+  left: -200px;
+  animation: moveClouds 30s linear infinite;
+}
+
+.cloud1::before {
+  width: 45px;
+  height: 45px;
+  top: -18px;
+  left: 10px;
+}
+
+.cloud1::after {
+  width: 55px;
+  height: 55px;
+  top: -22px;
+  right: 10px;
+}
+
+.cloud2 {
+  width: 130px;
+  height: 45px;
+  top: 250px;
+  left: -400px;
+  animation: moveClouds 40s linear infinite;
+}
+
+.cloud2::before {
+  width: 55px;
+  height: 55px;
+  top: -20px;
+  left: 15px;
+}
+
+.cloud2::after {
+  width: 65px;
+  height: 65px;
+  top: -25px;
+  right: 15px;
+}
+
+.cloud3 {
+  width: 90px;
+  height: 30px;
+  bottom: 120px;
+  left: -300px;
+  animation: moveClouds 35s linear infinite;
+}
+
+.cloud3::before {
+  width: 40px;
+  height: 40px;
+  top: -15px;
+  left: 10px;
+}
+
+.cloud3::after {
+  width: 50px;
+  height: 50px;
+  top: -20px;
+  right: 10px;
+}
+
+.cloud4 {
+  width: 110px;
+  height: 38px;
+  bottom: 250px;
+  left: -500px;
+  animation: moveClouds 50s linear infinite;
+}
+
+.cloud4::before {
+  width: 45px;
+  height: 45px;
+  top: -18px;
+  left: 10px;
+}
+
+.cloud4::after {
+  width: 60px;
+  height: 60px;
+  top: -24px;
+  right: 10px;
+}
+
+@keyframes moveClouds {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(1600px);
+  }
+}
+
+@keyframes floatCard {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+  .card {
+    width: 90%;
+    padding: 20px;
+  }
+
+  .card h1 {
+    font-size: 24px;
+  }
+
+  .result h2 {
+    font-size: 18px;
+  }
+
+  .status {
+    font-size: 16px;
+  }
+}
